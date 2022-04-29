@@ -7,8 +7,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
 import java.net.UnknownHostException
+import javax.inject.Inject
 
-class getPhotosByGroupIdUseCase(
+class getPhotosByGroupIdUseCase @Inject constructor(
     private val repository: Repository
 ) {
 

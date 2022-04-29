@@ -9,8 +9,9 @@ import com.dudnyk.framework.flickrgallery.data.model.dto.group.toGroup
 import com.dudnyk.framework.flickrgallery.data.model.dto.photo.toPhoto
 import com.dudnyk.framework.flickrgallery.data.remote.FlickrApi
 import com.dudnyk.framework.flickrgallery.domain.repository.Repository
+import javax.inject.Inject
 
-class RepositoryImpl(
+class RepositoryImpl @Inject constructor(
     private val api: FlickrApi
 ) : Repository {
 
