@@ -1,4 +1,4 @@
-package com.dudnyk.framework.flickrgallery.data.common
+package com.dudnyk.framework.flickrgallery.common
 
 object Constants {
     const val BASE_URL = "https://www.flickr.com/"

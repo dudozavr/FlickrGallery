@@ -1,5 +1,6 @@
 package com.dudnyk.framework.flickrgallery.data.model.dto.group
 
+import com.dudnyk.framework.flickrgallery.domain.model.Group
 import com.google.gson.annotations.SerializedName
 
 data class GroupDto(
@@ -12,10 +13,15 @@ data class GroupDto(
     val members: String,
     val name: String,
     @SerializedName("nsid")
-    val nsId: String,
+    val id: String,
     @SerializedName("pool_count")
     val poolCount: String,
     val privacy: String,
     @SerializedName("topic_count")
     val topicCount: String
+)
+
+fun GroupDto.toGroup() = Group(
+    id = id,
+    name = name
 )

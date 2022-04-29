@@ -1,5 +1,6 @@
 package com.dudnyk.framework.flickrgallery.data.model.dto.photo
 
+import com.dudnyk.framework.flickrgallery.domain.model.Photo
 import com.google.gson.annotations.SerializedName
 
 data class PhotoDto(
@@ -25,4 +26,10 @@ data class PhotoDto(
     val photoUrl: String,
     @SerializedName("width_h")
     val photoWidth: Int
+)
+
+fun PhotoDto.toPhoto() = Photo(
+    id = id,
+    title = title,
+    photoUrl = photoUrl
 )
