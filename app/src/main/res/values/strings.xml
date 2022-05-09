@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">FlickrGallery</string>
+    <string name="search_button_text">Search photos</string>
+    <string name="destination_search_label_text">Find your photos</string>
+    <string name="search_title_text">Result:</string>
+    <string name="destination_home_label_text">Home</string>
+    <string name="bottom_nav_home_title_text">Home</string>
+    <string name="bottom_nav_search_title_text">Search</string>
+    <string name="no_photo_title_text">No title</string>
+    <string name="add_tag_button_text">Add tag</string>
+    <string name="dialog_add_tag_title_text">Customize your tag</string>
+    <string name="dialog_add_tag_tag_hint_text">Tag</string>
+    <string name="full_match_search_check_box_text">Full match search</string>
+    <string name="cancel_button_text">Cancel</string>
+    <string name="submit_button_text">Submit</string>
+    <string name="try_again_button_text">try again</string>
+    <string name="default_error_text">Error! Please try again later</string>
+    <string name="empty_photo_list_text">No photos found for this tag</string>
 </resources>

@@ -23,13 +23,12 @@ data class PhotoDto(
     val server: String,
     val title: String,
     @SerializedName("url_h")
-    val photoUrl: String,
+    val photoUrl: String?,
     @SerializedName("width_h")
     val photoWidth: Int
 )
 
 fun PhotoDto.toPhoto() = Photo(
-    id = id,
     title = title,
     photoUrl = photoUrl
 )
