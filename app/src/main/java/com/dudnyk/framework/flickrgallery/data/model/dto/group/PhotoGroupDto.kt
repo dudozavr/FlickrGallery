@@ -1,6 +1,6 @@
 package com.dudnyk.framework.flickrgallery.data.model.dto.group
 
-import com.dudnyk.framework.flickrgallery.domain.model.Photo
+import com.dudnyk.framework.flickrgallery.common.utils.PhotoGroupUtils.getPhotoGroupIconUri
 import com.dudnyk.framework.flickrgallery.domain.model.PhotoGroup
 import com.google.gson.annotations.SerializedName
 
@@ -24,5 +24,6 @@ data class PhotoGroupDto(
 
 fun PhotoGroupDto.toPhotoGroup() = PhotoGroup(
     id = id,
-    name = name
+    name = name,
+    groupIconUrl = getPhotoGroupIconUri(this)
 )

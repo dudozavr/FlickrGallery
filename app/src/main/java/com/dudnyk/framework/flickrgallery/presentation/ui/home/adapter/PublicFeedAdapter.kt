@@ -10,8 +10,8 @@ import com.dudnyk.framework.flickrgallery.R
 import com.dudnyk.framework.flickrgallery.common.PublicFeedState
 import com.dudnyk.framework.flickrgallery.common.extension.ViewExtension.setVisibility
 import com.dudnyk.framework.flickrgallery.common.utils.RecyclerViewUtils.renderResult
-import com.dudnyk.framework.flickrgallery.databinding.LayoutGroupItemBinding
 import com.dudnyk.framework.flickrgallery.databinding.LayoutPartResultBinding
+import com.dudnyk.framework.flickrgallery.databinding.LayoutPublicFeedItemBinding
 import com.dudnyk.framework.flickrgallery.domain.model.PublicFeed
 import com.dudnyk.framework.flickrgallery.domain.model.PublicFeedTag
 import com.dudnyk.framework.flickrgallery.presentation.ui.home.adapter.item_decoration.HorizontalItemDecoration
@@ -24,7 +24,7 @@ class PublicFeedAdapter(private val actionListener: PublicFeedActions) :
     private var publicFeeds = emptyList<PublicFeedState>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PublicFeedViewHolder {
-        val binding = LayoutGroupItemBinding.inflate(
+        val binding = LayoutPublicFeedItemBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
         val resultBinding = LayoutPartResultBinding.bind(binding.root)
@@ -63,7 +63,7 @@ class PublicFeedAdapter(private val actionListener: PublicFeedActions) :
     }
 
     inner class PublicFeedViewHolder(
-        private val binding: LayoutGroupItemBinding,
+        private val binding: LayoutPublicFeedItemBinding,
         private val resultBinding: LayoutPartResultBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 

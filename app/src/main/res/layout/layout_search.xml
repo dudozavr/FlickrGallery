@@ -14,13 +14,6 @@
         app:layout_constraintGuide_begin="@dimen/guideline_margin" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/bottom_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_end="@dimen/guideline_margin" />
-
-    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/begin_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,25 +27,15 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="@dimen/guideline_margin" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/search_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/avenir_next_cyr_bold"
-        android:text="@string/search_title_text"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@id/begin_guideline"
-        app:layout_constraintTop_toTopOf="@+id/top_guideline" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_of_groups"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/end_guideline"
         app:layout_constraintStart_toStartOf="@+id/begin_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/search_title"
+        app:layout_constraintTop_toBottomOf="@+id/top_guideline"
         tools:listitem="@layout/layout_group_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

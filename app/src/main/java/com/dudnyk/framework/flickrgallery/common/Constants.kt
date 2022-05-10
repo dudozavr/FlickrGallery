@@ -2,6 +2,7 @@ package com.dudnyk.framework.flickrgallery.common
 
 object Constants {
     const val BASE_URL = "https://www.flickr.com/"
+    const val DEFAULT_PHOTO_GROUP_ICON_URL = "https://www.flickr.com/images/buddyicon.gif"
     const val DATABASE_NAME = "flickr_db"
     const val GROUP_SEARCH_METHOD = "flickr.groups.search"
     const val OBTAINING_PHOTO_FROM_GROUP_METHOD = "flickr.groups.pools.getPhotos"

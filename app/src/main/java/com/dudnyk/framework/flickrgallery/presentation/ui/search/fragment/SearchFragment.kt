@@ -2,6 +2,7 @@ package com.dudnyk.framework.flickrgallery.presentation.ui.search.fragment
 
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -38,7 +39,6 @@ class SearchFragment : Fragment() {
 
         initFields()
         setUpRecycleViews()
-        initObservers()
     }
 
     override fun onDestroyView() {
@@ -49,11 +49,13 @@ class SearchFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.toolbar_search, menu)
+        val searchView = menu.findItem(R.id.search_button)
+        initToolbarSearchViewListener(searchView.actionView as SearchView)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.submit_button -> {
+            R.id.search_button -> {
                 return true
             }
         }
@@ -64,18 +66,35 @@ class SearchFragment : Fragment() {
         listOfGroupsRecyclerView = binding.listOfGroups
     }
 
-    private fun initObservers() {
-        lifecycleScope.launchWhenStarted {
-            searchViewModel.pagePhotoGroupState.collectLatest { photoGroupPagingData ->
-                photoGroupAdapter.submitData(photoGroupPagingData)
-            }
-        }
-    }
-
     private fun setUpRecycleViews() {
         listOfGroupsRecyclerView.apply {
             adapter = photoGroupAdapter
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+        }
+    }
+
+    private fun initToolbarSearchViewListener(searchView: SearchView) {
+        searchView.setOnQueryTextListener(object :
+            SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                searchViewModel.getGroupByQueryKey(query ?: "")
+                callPagePhotoGroupStateFlow()
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                searchViewModel.getGroupByQueryKey(newText ?: "")
+                callPagePhotoGroupStateFlow()
+                return true
+            }
+        })
+    }
+
+    private fun callPagePhotoGroupStateFlow() {
+        lifecycleScope.launchWhenStarted {
+            searchViewModel.pagePhotoGroupState.collectLatest { photoGroupPagingData ->
+                photoGroupAdapter.submitData(photoGroupPagingData)
+            }
         }
     }
 }

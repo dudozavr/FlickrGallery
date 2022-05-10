@@ -34,6 +34,6 @@
         app:layout_constraintEnd_toEndOf="@+id/end_guideline"
         app:layout_constraintStart_toStartOf="@+id/begin_guideline"
         app:layout_constraintTop_toTopOf="@+id/top_guideline"
-        tools:listitem="@layout/layout_group_item" />
+        tools:listitem="@layout/layout_public_feed_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

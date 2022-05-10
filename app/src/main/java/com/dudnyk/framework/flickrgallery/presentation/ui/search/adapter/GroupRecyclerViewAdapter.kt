@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.dudnyk.framework.flickrgallery.databinding.LayoutGroupItemBinding
 import com.dudnyk.framework.flickrgallery.domain.model.PhotoGroup
 
@@ -30,7 +32,12 @@ class GroupRecyclerViewAdapter :
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun setGroupItem(photoGroupItem: PhotoGroup) {
-            binding.groupName.text = photoGroupItem.name
+            with(binding) {
+                groupName.text = photoGroupItem.name.trim()
+                Glide.with(root.context).load(photoGroupItem.groupIconUrl)
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .into(groupIcon)
+            }
         }
     }
 }
