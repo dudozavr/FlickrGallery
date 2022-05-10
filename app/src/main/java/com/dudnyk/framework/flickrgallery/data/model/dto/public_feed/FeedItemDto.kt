@@ -19,5 +19,6 @@ data class FeedItemDto(
 
 fun FeedItemDto.toPhoto() = Photo(
     title = title,
-    photoUrl = media.photoUrl
+    largePhotoUrl = media.photoUrl,
+    smallPhotoUrl = media.photoUrl
 )

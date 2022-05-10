@@ -14,6 +14,7 @@
         <action
             android:id="@+id/action_home_fragment_to_public_feed_tag_dialog_fragment"
             app:destination="@+id/public_feed_tag_dialog_fragment" />
+
         <action
             android:id="@+id/action_home_fragment_to_photo_detail_fragment"
             app:destination="@id/photo_detail_fragment" />
@@ -24,11 +25,13 @@
         android:id="@+id/public_feed_tag_dialog_fragment"
         android:name="com.dudnyk.framework.flickrgallery.presentation.ui.home.fragment.PublicFeedTagDialogFragment"
         android:label="PublicFeedTagDialogFragment">
+
         <argument
             android:name="publicFeedTag"
             android:defaultValue="@null"
             app:argType="com.dudnyk.framework.flickrgallery.domain.model.PublicFeedTag"
             app:nullable="true" />
+
     </dialog>
 
     <fragment
@@ -36,16 +39,37 @@
         android:name="com.dudnyk.framework.flickrgallery.presentation.ui.photo_detail.fragment.PhotoDetailFragment"
         android:label="{publicFeedPhoto}"
         tools:layout="@layout/layout_photo_detail">
+
         <argument
             android:name="publicFeedPhoto"
             app:argType="com.dudnyk.framework.flickrgallery.domain.model.Photo"
             app:nullable="false" />
+
     </fragment>
 
     <fragment
         android:id="@+id/search_fragment"
         android:name="com.dudnyk.framework.flickrgallery.presentation.ui.search.fragment.SearchFragment"
         android:label="@string/destination_search_label_text"
-        tools:layout="@layout/layout_search" />
+        tools:layout="@layout/layout_search">
+
+        <action
+            android:id="@+id/action_search_fragment_to_layout_photo_from_group_fragment"
+            app:destination="@id/layout_photos_from_group_fragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/layout_photos_from_group_fragment"
+        android:name="com.dudnyk.framework.flickrgallery.presentation.ui.photos_from_group.fragment.PhotosFromGroupFragment"
+        android:label="{PhotoGroup}"
+        tools:layout="@layout/layout_photos_from_group">
+
+        <argument
+            android:name="PhotoGroup"
+            app:argType="com.dudnyk.framework.flickrgallery.domain.model.PhotoGroup"
+            app:nullable="false" />
+
+    </fragment>
 
 </navigation>

@@ -7,8 +7,6 @@ data class PhotoDto(
     @SerializedName("dateadded")
     val dateAdded: String,
     val farm: Int,
-    @SerializedName("height_h")
-    val photoHeight: Int,
     val id: String,
     @SerializedName("isfamily")
     val isFamily: Int,
@@ -23,12 +21,21 @@ data class PhotoDto(
     val server: String,
     val title: String,
     @SerializedName("url_h")
-    val photoUrl: String?,
+    val largePhotoUrl: String?,
+    @SerializedName("height_h")
+    val largePhotoHeight: Int,
     @SerializedName("width_h")
-    val photoWidth: Int
+    val largePhotoWidth: Int,
+    @SerializedName("url_n")
+    val smallPhotoUrl: String?,
+    @SerializedName("height_n")
+    val smallPhotoHeight: Int,
+    @SerializedName("width_n")
+    val smallPhotoWidth: Int
 )
 
 fun PhotoDto.toPhoto() = Photo(
     title = title,
-    photoUrl = photoUrl
+    largePhotoUrl = largePhotoUrl ?: "",
+    smallPhotoUrl = smallPhotoUrl ?: ""
 )

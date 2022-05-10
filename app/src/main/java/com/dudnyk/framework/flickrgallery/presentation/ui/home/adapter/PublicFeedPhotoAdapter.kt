@@ -11,10 +11,10 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.dudnyk.framework.flickrgallery.R
 import com.dudnyk.framework.flickrgallery.databinding.LayoutPhotoItemBinding
 import com.dudnyk.framework.flickrgallery.domain.model.Photo
-import com.dudnyk.framework.flickrgallery.presentation.ui.home.PublicFeedActions
+import com.dudnyk.framework.flickrgallery.presentation.ui.home.PublicFeedItemActions
 import com.dudnyk.framework.flickrgallery.presentation.ui.home.adapter.diff_util.PublicFeedPhotoDiffUtil
 
-class PublicFeedPhotoAdapter(private val actionListener: PublicFeedActions) :
+class PublicFeedPhotoAdapter(private val actionListener: PublicFeedItemActions) :
     RecyclerView.Adapter<PublicFeedPhotoAdapter.PublicFeedPhotoViewHolder>(), View.OnClickListener {
 
     private var publicFeedPhotosData: List<Photo> = emptyList()
@@ -67,7 +67,7 @@ class PublicFeedPhotoAdapter(private val actionListener: PublicFeedActions) :
                     photoTitle.text = photoItem.title
                 }
                 photoTitle.text = photoItem.title
-                photoItem.photoUrl?.let { photoUrl ->
+                photoItem.largePhotoUrl?.let { photoUrl ->
                     Glide.with(root.context).load(photoUrl)
                         .transition(DrawableTransitionOptions.withCrossFade())
                         .into(photo)

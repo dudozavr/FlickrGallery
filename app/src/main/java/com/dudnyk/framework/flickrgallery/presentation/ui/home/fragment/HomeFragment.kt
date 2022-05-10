@@ -12,7 +12,7 @@ import com.dudnyk.framework.flickrgallery.R
 import com.dudnyk.framework.flickrgallery.databinding.LayoutHomeBinding
 import com.dudnyk.framework.flickrgallery.domain.model.Photo
 import com.dudnyk.framework.flickrgallery.domain.model.PublicFeedTag
-import com.dudnyk.framework.flickrgallery.presentation.ui.home.PublicFeedActions
+import com.dudnyk.framework.flickrgallery.presentation.ui.home.PublicFeedItemActions
 import com.dudnyk.framework.flickrgallery.presentation.ui.home.adapter.PublicFeedAdapter
 import com.dudnyk.framework.flickrgallery.presentation.ui.home.fragment.PublicFeedTagDialogFragment.Companion.NEW_PUBLIC_FEED_TEG_KEY
 import com.dudnyk.framework.flickrgallery.presentation.ui.home.fragment.PublicFeedTagDialogFragment.Companion.OLD_PUBLIC_FEED_TEG_KEY
@@ -70,7 +70,7 @@ class HomeFragment : Fragment() {
 
     private fun initFields() {
         publicFeedsRecycler = binding.publicFeeds
-        publicFeedAdapter = PublicFeedAdapter(object : PublicFeedActions {
+        publicFeedAdapter = PublicFeedAdapter(object : PublicFeedItemActions {
             override fun onPublicFeedEdit(publicFeedTag: PublicFeedTag) {
                 findNavController().navigate(
                     HomeFragmentDirections.actionHomeFragmentToPublicFeedTagDialogFragment().apply {

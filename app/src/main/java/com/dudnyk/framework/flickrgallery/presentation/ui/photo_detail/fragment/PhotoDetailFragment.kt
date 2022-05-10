@@ -42,6 +42,6 @@ class PhotoDetailFragment : Fragment() {
     }
 
     private fun setupPhoto() {
-        Glide.with(requireContext()).load(args.publicFeedPhoto.photoUrl).into(photoImageView)
+        Glide.with(requireContext()).load(args.publicFeedPhoto.largePhotoUrl).into(photoImageView)
     }
 }

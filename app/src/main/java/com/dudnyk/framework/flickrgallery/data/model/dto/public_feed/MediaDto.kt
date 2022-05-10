@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class MediaDto(
     @SerializedName("m")
-    val photoUrl: String?
+    val photoUrl: String
 )

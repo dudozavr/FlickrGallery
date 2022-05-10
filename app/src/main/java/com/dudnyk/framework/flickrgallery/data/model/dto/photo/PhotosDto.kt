@@ -7,6 +7,7 @@ data class PhotosDto(
     val pages: Int,
     @SerializedName("perpage")
     val perPage: Int,
+    @SerializedName("photo")
     val listOfPhotos: List<PhotoDto>,
     val total: Int
 )

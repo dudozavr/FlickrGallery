@@ -15,10 +15,10 @@ import com.dudnyk.framework.flickrgallery.databinding.LayoutPublicFeedItemBindin
 import com.dudnyk.framework.flickrgallery.domain.model.PublicFeed
 import com.dudnyk.framework.flickrgallery.domain.model.PublicFeedTag
 import com.dudnyk.framework.flickrgallery.presentation.ui.home.adapter.item_decoration.HorizontalItemDecoration
-import com.dudnyk.framework.flickrgallery.presentation.ui.home.PublicFeedActions
+import com.dudnyk.framework.flickrgallery.presentation.ui.home.PublicFeedItemActions
 import com.dudnyk.framework.flickrgallery.presentation.ui.home.adapter.diff_util.PublicFeedDiffUtil
 
-class PublicFeedAdapter(private val actionListener: PublicFeedActions) :
+class PublicFeedAdapter(private val actionListener: PublicFeedItemActions) :
     RecyclerView.Adapter<PublicFeedAdapter.PublicFeedViewHolder>(), View.OnClickListener {
 
     private var publicFeeds = emptyList<PublicFeedState>()

@@ -3,7 +3,7 @@ package com.dudnyk.framework.flickrgallery.presentation.ui.home
 import com.dudnyk.framework.flickrgallery.domain.model.Photo
 import com.dudnyk.framework.flickrgallery.domain.model.PublicFeedTag
 
-interface PublicFeedActions {
+interface PublicFeedItemActions {
 
     fun onPublicFeedEdit(publicFeedTag: PublicFeedTag)
 

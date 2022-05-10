@@ -6,7 +6,7 @@ object Constants {
     const val DATABASE_NAME = "flickr_db"
     const val GROUP_SEARCH_METHOD = "flickr.groups.search"
     const val OBTAINING_PHOTO_FROM_GROUP_METHOD = "flickr.groups.pools.getPhotos"
-    const val PHOTO_EXTRAS = "url_h"
+    const val PHOTO_EXTRAS = "url_h, url_n"
     const val HTTP_RESPONSE_FORMAT = "json"
     const val NO_JSON_CALL_BACK_VALUE = 1
     const val MAX_PAGE_SIZE = 50

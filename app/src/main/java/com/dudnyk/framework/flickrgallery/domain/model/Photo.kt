@@ -6,7 +6,8 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Photo(
     val title: String,
-    val photoUrl: String?
+    val largePhotoUrl: String,
+    val smallPhotoUrl: String
 ) : Parcelable {
 
     override fun toString() = title
