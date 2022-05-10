@@ -64,7 +64,7 @@ class PhotosFromGroupFragment : Fragment() {
     private fun setUpRecycleViews() {
         listOfPhotosRecyclerView.apply {
             adapter = photoAdapter
-            layoutManager = GridLayoutManager(requireContext(), 4)
+            layoutManager = GridLayoutManager(requireContext(), 3)
         }
     }
 }

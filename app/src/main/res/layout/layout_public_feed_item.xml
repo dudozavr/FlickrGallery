@@ -6,7 +6,9 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
     android:background="@drawable/bg_layout_group_item"
-    android:padding="8dp">
+    android:paddingHorizontal="8dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="6dp">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -69,6 +71,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:layout_marginTop="4dp"
+            android:scrollbarSize="3dp"
+            android:scrollbarStyle="outsideInset"
+            android:scrollbarThumbHorizontal="@drawable/bg_scrollbar_thumb"
+            android:scrollbars="horizontal"
             tools:itemCount="1"
             tools:listitem="@layout/layout_photo_item" />
 
