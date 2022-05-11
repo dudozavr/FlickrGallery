@@ -12,26 +12,12 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="@dimen/guideline_margin" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/begin_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="@dimen/guideline_margin" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/end_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="@dimen/guideline_margin" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_of_photos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/end_guideline"
-        app:layout_constraintStart_toStartOf="@+id/begin_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/top_guideline"
         tools:itemCount="4"
         tools:listitem="@layout/layout_photo_item" />

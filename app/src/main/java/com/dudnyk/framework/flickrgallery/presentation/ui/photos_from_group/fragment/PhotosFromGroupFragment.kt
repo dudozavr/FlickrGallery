@@ -10,7 +10,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.dudnyk.framework.flickrgallery.R
 import com.dudnyk.framework.flickrgallery.databinding.LayoutPhotosFromGroupBinding
+import com.dudnyk.framework.flickrgallery.presentation.ui.photos_from_group.adapter.GridItemDecoration
 import com.dudnyk.framework.flickrgallery.presentation.ui.photos_from_group.adapter.PhotosFromGroupAdapter
 import com.dudnyk.framework.flickrgallery.presentation.ui.photos_from_group.viewmodel.PhotosFromGroupViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -62,9 +64,14 @@ class PhotosFromGroupFragment : Fragment() {
     }
 
     private fun setUpRecycleViews() {
+        val columnCount = resources.getInteger(R.integer.grid_column_count)
         listOfPhotosRecyclerView.apply {
             adapter = photoAdapter
-            layoutManager = GridLayoutManager(requireContext(), 3)
+            layoutManager = GridLayoutManager(
+                requireContext(),
+                columnCount
+            )
+            addItemDecoration(GridItemDecoration(columnCount))
         }
     }
 }
