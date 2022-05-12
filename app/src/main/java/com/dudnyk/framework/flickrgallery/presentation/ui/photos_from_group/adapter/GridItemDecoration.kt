@@ -25,16 +25,9 @@ class GridItemDecoration(private val columnCount: Int) : RecyclerView.ItemDecora
             view.context.resources.displayMetrics
         ).toInt()
 
-        outRect.set(
-            column * outRectValueToSet / columnCount,
-            outRectValueToSet - (column + 1) * outRectValueToSet / columnCount,
-            if (position >= columnCount) {
-                outRectValueToSet
-            } else {
-                0
-            },
-            0
-        )
-
+        outRect.bottom = outRectValueToSet
+        if ((column + 1) != columnCount) {
+            outRect.right = outRectValueToSet
+        }
     }
 }
