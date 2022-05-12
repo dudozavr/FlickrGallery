@@ -37,11 +37,11 @@
     <fragment
         android:id="@+id/photo_detail_fragment"
         android:name="com.dudnyk.framework.flickrgallery.presentation.ui.photo_detail.fragment.PhotoDetailFragment"
-        android:label="{publicFeedPhoto}"
+        android:label="{Photo}"
         tools:layout="@layout/layout_photo_detail">
 
         <argument
-            android:name="publicFeedPhoto"
+            android:name="Photo"
             app:argType="com.dudnyk.framework.flickrgallery.domain.model.Photo"
             app:nullable="false" />
 
@@ -69,6 +69,10 @@
             android:name="PhotoGroup"
             app:argType="com.dudnyk.framework.flickrgallery.domain.model.PhotoGroup"
             app:nullable="false" />
+
+        <action
+            android:id="@+id/action_layout_photos_from_group_fragment_to_photo_detail_fragment"
+            app:destination="@id/photo_detail_fragment" />
 
     </fragment>
 

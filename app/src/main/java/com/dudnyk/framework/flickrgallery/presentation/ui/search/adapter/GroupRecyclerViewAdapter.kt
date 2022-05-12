@@ -36,7 +36,9 @@ class GroupRecyclerViewAdapter(private val groupItemActions: GroupItemActions) :
 
         init {
             binding.arrowForwardButton.setOnClickListener {
-                groupItemActions.onItemClick(photoGroup!!)
+                photoGroup?.let { photoGroup ->
+                    groupItemActions.onItemClick(photoGroup)
+                }
             }
         }
 

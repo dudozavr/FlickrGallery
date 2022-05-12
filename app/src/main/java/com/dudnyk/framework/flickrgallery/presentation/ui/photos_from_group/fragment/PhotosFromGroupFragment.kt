@@ -7,11 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dudnyk.framework.flickrgallery.R
 import com.dudnyk.framework.flickrgallery.databinding.LayoutPhotosFromGroupBinding
+import com.dudnyk.framework.flickrgallery.domain.model.Photo
+import com.dudnyk.framework.flickrgallery.presentation.ui.photos_from_group.PhotosFromGroupActions
 import com.dudnyk.framework.flickrgallery.presentation.ui.photos_from_group.adapter.GridItemDecoration
 import com.dudnyk.framework.flickrgallery.presentation.ui.photos_from_group.adapter.PhotosFromGroupAdapter
 import com.dudnyk.framework.flickrgallery.presentation.ui.photos_from_group.viewmodel.PhotosFromGroupViewModel
@@ -25,7 +28,15 @@ class PhotosFromGroupFragment : Fragment() {
     private val photosFromGroupViewModel by viewModels<PhotosFromGroupViewModel>()
     private var _binding: LayoutPhotosFromGroupBinding? = null
     private val binding get() = _binding!!
-    private val photoAdapter = PhotosFromGroupAdapter()
+    private val photoAdapter = PhotosFromGroupAdapter(object : PhotosFromGroupActions {
+        override fun onPhotoClick(photo: Photo) {
+            findNavController().navigate(
+                PhotosFromGroupFragmentDirections.actionLayoutPhotosFromGroupFragmentToPhotoDetailFragment(
+                    photo
+                )
+            )
+        }
+    })
     private lateinit var listOfPhotosRecyclerView: RecyclerView
 
     override fun onCreateView(

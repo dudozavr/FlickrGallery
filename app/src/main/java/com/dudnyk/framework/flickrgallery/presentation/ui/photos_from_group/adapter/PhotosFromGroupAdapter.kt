@@ -8,8 +8,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.dudnyk.framework.flickrgallery.databinding.LayoutPhotoItemBinding
 import com.dudnyk.framework.flickrgallery.domain.model.Photo
+import com.dudnyk.framework.flickrgallery.presentation.ui.photos_from_group.PhotosFromGroupActions
 
-class PhotosFromGroupAdapter :
+class PhotosFromGroupAdapter(private val photosFromGroupAction: PhotosFromGroupActions) :
     PagingDataAdapter<Photo, PhotosFromGroupAdapter.PhotosFromGroupViewHolder>(
         diffCallback = PhotoDiffUtil()
     ) {
@@ -30,7 +31,19 @@ class PhotosFromGroupAdapter :
     inner class PhotosFromGroupViewHolder(
         private val binding: LayoutPhotoItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
+
+        private var photo: Photo? = null
+
+        init {
+            binding.photo.setOnClickListener {
+                photo?.let { photo ->
+                    photosFromGroupAction.onPhotoClick(photo)
+                }
+            }
+        }
+
         fun setPhoto(photoItem: Photo) {
+            this.photo = photoItem
             with(binding) {
                 photoTitle.text = photoItem.title
                 Glide.with(root.context).load(photoItem.smallPhotoUrl)
