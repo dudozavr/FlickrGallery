@@ -2,23 +2,25 @@ package com.dudnyk.framework.flickrgallery.data.model.dto.group
 
 import com.dudnyk.framework.flickrgallery.common.utils.PhotoGroupUtils.getPhotoGroupIconUri
 import com.dudnyk.framework.flickrgallery.domain.model.PhotoGroup
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class PhotoGroupDto(
-    @SerializedName("eighteenplus")
+    @Json(name = "eighteenplus")
     val eighteenPlus: Int,
-    @SerializedName("iconfarm")
+    @Json(name = "iconfarm")
     val iconFarm: Int,
-    @SerializedName("iconserver")
+    @Json(name = "iconserver")
     val iconServer: String,
     val members: String,
     val name: String,
-    @SerializedName("nsid")
+    @Json(name = "nsid")
     val id: String,
-    @SerializedName("pool_count")
+    @Json(name = "pool_count")
     val poolCount: String,
     val privacy: String,
-    @SerializedName("topic_count")
+    @Json(name = "topic_count")
     val topicCount: String
 )
 

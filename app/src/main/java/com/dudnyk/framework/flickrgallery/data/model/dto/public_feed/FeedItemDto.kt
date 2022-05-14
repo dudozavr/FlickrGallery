@@ -1,13 +1,15 @@
 package com.dudnyk.framework.flickrgallery.data.model.dto.public_feed
 
 import com.dudnyk.framework.flickrgallery.domain.model.Photo
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class FeedItemDto(
     val author: String,
-    @SerializedName("author_id")
+    @Json(name = "author_id")
     val authorId: String,
-    @SerializedName("date_taken")
+    @Json(name = "date_taken")
     val dateTaken: String,
     val description: String,
     val link: String,

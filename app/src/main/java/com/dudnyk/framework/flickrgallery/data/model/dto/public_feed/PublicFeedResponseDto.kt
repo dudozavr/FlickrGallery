@@ -2,7 +2,9 @@ package com.dudnyk.framework.flickrgallery.data.model.dto.public_feed
 
 import com.dudnyk.framework.flickrgallery.domain.model.PublicFeed
 import com.dudnyk.framework.flickrgallery.domain.model.PublicFeedTag
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class PublicFeedResponseDto(
     val description: String,
     val generator: String,

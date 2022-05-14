@@ -1,41 +1,43 @@
 package com.dudnyk.framework.flickrgallery.data.model.dto.photo
 
 import com.dudnyk.framework.flickrgallery.domain.model.Photo
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class PhotoDto(
-    @SerializedName("dateadded")
+    @Json(name = "dateadded")
     val dateAdded: String,
     val farm: Int,
     val id: String,
-    @SerializedName("isfamily")
+    @Json(name = "isfamily")
     val isFamily: Int,
-    @SerializedName("isfriend")
+    @Json(name = "isfriend")
     val isFriend: Int,
-    @SerializedName("ispublic")
+    @Json(name = "ispublic")
     val isPublic: Int,
     val owner: String,
-    @SerializedName("ownername")
+    @Json(name = "ownername")
     val ownerName: String,
     val secret: String,
     val server: String,
     val title: String,
-    @SerializedName("url_h")
-    val largePhotoUrl: String?,
-    @SerializedName("height_h")
-    val largePhotoHeight: Int,
-    @SerializedName("width_h")
-    val largePhotoWidth: Int,
-    @SerializedName("url_n")
-    val smallPhotoUrl: String?,
-    @SerializedName("height_n")
-    val smallPhotoHeight: Int,
-    @SerializedName("width_n")
-    val smallPhotoWidth: Int
+    @Json(name = "url_h")
+    val largePhotoUrl: String = "",
+    @Json(name = "height_h")
+    val largePhotoHeight: Int = 0,
+    @Json(name = "width_h")
+    val largePhotoWidth: Int = 0,
+    @Json(name = "url_n")
+    val smallPhotoUrl: String  = "",
+    @Json(name = "height_n")
+    val smallPhotoHeight: Int = 0,
+    @Json(name = "width_n")
+    val smallPhotoWidth: Int = 0
 )
 
 fun PhotoDto.toPhoto() = Photo(
     title = title,
-    largePhotoUrl = largePhotoUrl ?: "",
-    smallPhotoUrl = smallPhotoUrl ?: ""
+    largePhotoUrl = largePhotoUrl,
+    smallPhotoUrl = smallPhotoUrl
 )

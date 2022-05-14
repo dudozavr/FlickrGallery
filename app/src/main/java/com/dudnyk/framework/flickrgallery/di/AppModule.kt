@@ -13,13 +13,14 @@ import com.dudnyk.framework.flickrgallery.data.repository.search.SearchRemoteRep
 import com.dudnyk.framework.flickrgallery.domain.repository.public_feed.PublicFeedLocalRepository
 import com.dudnyk.framework.flickrgallery.domain.repository.public_feed.PublicFeedRemoteRepository
 import com.dudnyk.framework.flickrgallery.domain.repository.search.SearchRemoteRepository
+import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -28,11 +29,12 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideFlickrApi(): FlickrApi = Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-        .create(FlickrApi::class.java)
+    fun provideFlickrApi(): FlickrApi =
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(MoshiConverterFactory.create())
+            .build()
+            .create(FlickrApi::class.java)
 
     @Provides
     @Singleton
