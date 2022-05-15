@@ -1,14 +1,12 @@
 package com.dudnyk.framework.flickrgallery.data.repository.public_feed
 
 import com.dudnyk.framework.flickrgallery.data.local.dao.PublicFeedTagDao
-import com.dudnyk.framework.flickrgallery.data.model.dto.public_feed.PublicFeedTagEntity
 import com.dudnyk.framework.flickrgallery.data.model.dto.public_feed.toPublicFeedTag
 import com.dudnyk.framework.flickrgallery.domain.model.PublicFeedTag
 import com.dudnyk.framework.flickrgallery.domain.model.toPublicFeedTagEntity
 import com.dudnyk.framework.flickrgallery.domain.repository.public_feed.PublicFeedLocalRepository
-import javax.inject.Inject
 
-class PublicFeedLocalRepositoryImpl @Inject constructor(
+class PublicFeedLocalRepositoryImpl(
     private val publicFeedTagDao: PublicFeedTagDao
 ) : PublicFeedLocalRepository {
 

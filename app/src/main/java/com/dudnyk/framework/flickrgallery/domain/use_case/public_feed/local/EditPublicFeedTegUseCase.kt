@@ -6,9 +6,8 @@ import com.dudnyk.framework.flickrgallery.domain.model.PublicFeedTag
 import com.dudnyk.framework.flickrgallery.domain.repository.public_feed.PublicFeedLocalRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import javax.inject.Inject
 
-class EditPublicFeedTegUseCase @Inject constructor(
+class EditPublicFeedTegUseCase(
     private val repository: PublicFeedLocalRepository
 ) {
     operator fun invoke(

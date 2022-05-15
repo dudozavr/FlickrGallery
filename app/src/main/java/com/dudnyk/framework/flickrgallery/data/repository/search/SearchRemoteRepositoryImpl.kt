@@ -9,9 +9,8 @@ import com.dudnyk.framework.flickrgallery.data.remote.FlickrApi
 import com.dudnyk.framework.flickrgallery.domain.model.Photo
 import com.dudnyk.framework.flickrgallery.domain.repository.search.SearchRemoteRepository
 import kotlinx.coroutines.flow.Flow
-import javax.inject.Inject
 
-class SearchRemoteRepositoryImpl @Inject constructor(
+class SearchRemoteRepositoryImpl(
     private val api: FlickrApi
 ) : SearchRemoteRepository {
 

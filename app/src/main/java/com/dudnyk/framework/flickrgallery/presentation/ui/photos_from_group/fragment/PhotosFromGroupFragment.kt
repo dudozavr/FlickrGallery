@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -18,14 +17,13 @@ import com.dudnyk.framework.flickrgallery.presentation.ui.photos_from_group.Phot
 import com.dudnyk.framework.flickrgallery.presentation.ui.photos_from_group.adapter.GridItemDecoration
 import com.dudnyk.framework.flickrgallery.presentation.ui.photos_from_group.adapter.PhotosFromGroupAdapter
 import com.dudnyk.framework.flickrgallery.presentation.ui.photos_from_group.viewmodel.PhotosFromGroupViewModel
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class PhotosFromGroupFragment : Fragment() {
 
     private val args: PhotosFromGroupFragmentArgs by navArgs()
-    private val photosFromGroupViewModel by viewModels<PhotosFromGroupViewModel>()
+    private val photosFromGroupViewModel by viewModel<PhotosFromGroupViewModel>()
     private var _binding: LayoutPhotosFromGroupBinding? = null
     private val binding get() = _binding!!
     private val photoAdapter = PhotosFromGroupAdapter(object : PhotosFromGroupActions {

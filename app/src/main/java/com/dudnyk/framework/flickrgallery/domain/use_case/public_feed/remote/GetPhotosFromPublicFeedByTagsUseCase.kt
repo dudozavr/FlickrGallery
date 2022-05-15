@@ -10,9 +10,7 @@ import com.dudnyk.framework.flickrgallery.domain.repository.public_feed.PublicFe
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-import javax.inject.Inject
-
-class GetPhotosFromPublicFeedByTagsUseCase @Inject constructor(
+class GetPhotosFromPublicFeedByTagsUseCase(
     private val repository: PublicFeedRemoteRepository
 ) {
     operator fun invoke(publicFeedTag: PublicFeedTag? = null): Flow<PublicFeedResult> =

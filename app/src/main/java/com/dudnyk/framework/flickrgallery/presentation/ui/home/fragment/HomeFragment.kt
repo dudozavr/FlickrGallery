@@ -3,7 +3,6 @@ package com.dudnyk.framework.flickrgallery.presentation.ui.home.fragment
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,14 +16,13 @@ import com.dudnyk.framework.flickrgallery.presentation.ui.home.adapter.PublicFee
 import com.dudnyk.framework.flickrgallery.presentation.ui.home.fragment.PublicFeedTagDialogFragment.Companion.NEW_PUBLIC_FEED_TEG_KEY
 import com.dudnyk.framework.flickrgallery.presentation.ui.home.fragment.PublicFeedTagDialogFragment.Companion.OLD_PUBLIC_FEED_TEG_KEY
 import com.dudnyk.framework.flickrgallery.presentation.ui.home.viewmodel.HomeViewModel
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-    private val homeViewModel by viewModels<HomeViewModel>()
+    private val homeViewModel by viewModel<HomeViewModel>()
     private var _binding: LayoutHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var publicFeedAdapter: PublicFeedAdapter

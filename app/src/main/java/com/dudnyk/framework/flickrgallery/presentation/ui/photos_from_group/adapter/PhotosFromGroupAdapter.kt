@@ -2,10 +2,12 @@ package com.dudnyk.framework.flickrgallery.presentation.ui.photos_from_group.ada
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.dudnyk.framework.flickrgallery.R
 import com.dudnyk.framework.flickrgallery.databinding.LayoutPhotoItemBinding
 import com.dudnyk.framework.flickrgallery.domain.model.Photo
 import com.dudnyk.framework.flickrgallery.presentation.ui.photos_from_group.PhotosFromGroupActions
@@ -46,9 +48,18 @@ class PhotosFromGroupAdapter(private val photosFromGroupAction: PhotosFromGroupA
             this.photo = photoItem
             with(binding) {
                 photoTitle.text = photoItem.title
-                Glide.with(root.context).load(photoItem.smallPhotoUrl)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .into(photo)
+                if (photoItem.smallPhotoUrl.isNotBlank()) {
+                    Glide.with(root.context).load(photoItem.smallPhotoUrl)
+                        .transition(DrawableTransitionOptions.withCrossFade())
+                        .into(photo)
+                } else {
+                    photo.setImageDrawable(
+                        AppCompatResources.getDrawable(
+                            root.context,
+                            R.drawable.empty_photo
+                        )
+                    )
+                }
             }
         }
     }

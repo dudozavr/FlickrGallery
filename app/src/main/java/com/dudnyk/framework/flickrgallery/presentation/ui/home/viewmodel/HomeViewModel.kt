@@ -7,9 +7,7 @@ import com.dudnyk.framework.flickrgallery.common.PublicFeedResult
 import com.dudnyk.framework.flickrgallery.common.PublicFeedState
 import com.dudnyk.framework.flickrgallery.common.extension.MutableListExtension.replaceByIndex
 import com.dudnyk.framework.flickrgallery.common.extension.MutableListExtension.replaceByIndexOrAdd
-import com.dudnyk.framework.flickrgallery.common.sealed.Result
 import com.dudnyk.framework.flickrgallery.common.utils.ResultUtils.processResult
-import com.dudnyk.framework.flickrgallery.domain.model.PublicFeed
 import com.dudnyk.framework.flickrgallery.domain.model.PublicFeedTag
 import com.dudnyk.framework.flickrgallery.domain.use_case.public_feed.local.DeletePublicFeedTagByTagFromBDUseCase
 import com.dudnyk.framework.flickrgallery.domain.use_case.public_feed.local.EditPublicFeedTegUseCase
@@ -17,15 +15,12 @@ import com.dudnyk.framework.flickrgallery.domain.use_case.public_feed.local.GetP
 import com.dudnyk.framework.flickrgallery.domain.use_case.public_feed.local.InsertPublicFeedTagToBDUseCase
 import com.dudnyk.framework.flickrgallery.domain.use_case.public_feed.remote.GetPhotosFromPublicFeedByTagsUseCase
 import com.dudnyk.framework.flickrgallery.presentation.ui.home.ItemState
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class HomeViewModel @Inject constructor(
+class HomeViewModel(
     private val getPhotosFromPublicFeedByTagsUseCase: GetPhotosFromPublicFeedByTagsUseCase,
     private val getPublicFeedTagsFromDBUseCase: GetPublicFeedTagsFromDBUseCase,
     private val insertPublicFeedTagToBDUseCase: InsertPublicFeedTagToBDUseCase,

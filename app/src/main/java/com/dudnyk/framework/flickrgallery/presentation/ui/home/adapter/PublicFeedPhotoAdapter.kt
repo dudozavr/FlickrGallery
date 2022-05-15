@@ -67,16 +67,18 @@ class PublicFeedPhotoAdapter(private val actionListener: PublicFeedItemActions) 
                     photoTitle.text = photoItem.title
                 }
                 photoTitle.text = photoItem.title
-                photoItem.largePhotoUrl?.let { photoUrl ->
-                    Glide.with(root.context).load(photoUrl)
+                if (photoItem.largePhotoUrl.isNotBlank()) {
+                    Glide.with(root.context).load(photoItem.largePhotoUrl)
                         .transition(DrawableTransitionOptions.withCrossFade())
                         .into(photo)
-                } ?: photo.setImageDrawable(
-                    AppCompatResources.getDrawable(
-                        root.context,
-                        R.drawable.empty_photo
+                } else {
+                    photo.setImageDrawable(
+                        AppCompatResources.getDrawable(
+                            root.context,
+                            R.drawable.empty_photo
+                        )
                     )
-                )
+                }
             }
         }
     }

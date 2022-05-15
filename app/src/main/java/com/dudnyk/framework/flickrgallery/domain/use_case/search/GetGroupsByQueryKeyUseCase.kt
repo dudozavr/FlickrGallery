@@ -4,9 +4,8 @@ import androidx.paging.PagingData
 import com.dudnyk.framework.flickrgallery.domain.model.PhotoGroup
 import com.dudnyk.framework.flickrgallery.domain.repository.search.SearchRemoteRepository
 import kotlinx.coroutines.flow.Flow
-import javax.inject.Inject
 
-class GetGroupsByQueryKeyUseCase @Inject constructor(
+class GetGroupsByQueryKeyUseCase(
     private val repository: SearchRemoteRepository
 ) {
 

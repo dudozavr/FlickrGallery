@@ -3,7 +3,6 @@ package com.dudnyk.framework.flickrgallery.presentation.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -13,9 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.dudnyk.framework.flickrgallery.R
 import com.dudnyk.framework.flickrgallery.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private var _binding: ActivityMainBinding? = null

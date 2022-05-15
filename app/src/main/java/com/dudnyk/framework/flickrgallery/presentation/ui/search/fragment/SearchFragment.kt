@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,13 +14,12 @@ import com.dudnyk.framework.flickrgallery.domain.model.PhotoGroup
 import com.dudnyk.framework.flickrgallery.presentation.ui.search.GroupItemActions
 import com.dudnyk.framework.flickrgallery.presentation.ui.search.adapter.GroupRecyclerViewAdapter
 import com.dudnyk.framework.flickrgallery.presentation.ui.search.viewmodel.SearchViewModel
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class SearchFragment : Fragment() {
 
-    private val searchViewModel by viewModels<SearchViewModel>()
+    private val searchViewModel by viewModel<SearchViewModel>()
     private var _binding: LayoutSearchBinding? = null
     private val binding get() = _binding!!
     private val photoGroupAdapter = GroupRecyclerViewAdapter(object : GroupItemActions {

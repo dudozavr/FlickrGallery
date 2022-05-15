@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.dudnyk.framework.flickrgallery.R
 import com.dudnyk.framework.flickrgallery.databinding.LayoutPhotoDetailBinding
 
 class PhotoDetailFragment : Fragment() {
@@ -42,6 +44,15 @@ class PhotoDetailFragment : Fragment() {
     }
 
     private fun setupPhoto() {
-        Glide.with(requireContext()).load(args.photo.largePhotoUrl).into(photoImageView)
+        if (args.photo.largePhotoUrl.isNotBlank()) {
+            Glide.with(requireContext()).load(args.photo.largePhotoUrl).into(photoImageView)
+        } else {
+            photoImageView.setImageDrawable(
+                AppCompatResources.getDrawable(
+                    requireContext(),
+                    R.drawable.empty_photo
+                )
+            )
+        }
     }
 }
