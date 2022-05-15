@@ -94,14 +94,14 @@ class HomeFragment : Fragment() {
     }
 
     private fun initObservers() {
-        lifecycleScope.launchWhenStarted {
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             homeViewModel.publicFeedListState.collect { listOfPublicFeedStates ->
                 if (listOfPublicFeedStates.isNotEmpty()) {
                     publicFeedAdapter.setPublicFeeds(listOfPublicFeedStates)
                 }
             }
         }
-        lifecycleScope.launchWhenStarted {
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             findNavController().currentBackStackEntryFlow.collectLatest { navBackStackEntry ->
                 navBackStackEntry.savedStateHandle.get<PublicFeedTag>(NEW_PUBLIC_FEED_TEG_KEY)
                     ?.let { newPublicFeedTag ->

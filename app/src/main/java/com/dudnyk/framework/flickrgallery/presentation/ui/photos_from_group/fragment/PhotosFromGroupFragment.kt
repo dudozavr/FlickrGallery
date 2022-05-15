@@ -65,7 +65,7 @@ class PhotosFromGroupFragment : Fragment() {
     }
 
     private fun initObservers() {
-        lifecycleScope.launchWhenStarted {
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             photosFromGroupViewModel.pagePhotoState.collectLatest { photoPagingData ->
                 photoAdapter.submitData(photoPagingData)
             }

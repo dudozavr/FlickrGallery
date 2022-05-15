@@ -100,7 +100,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun callPagePhotoGroupStateFlow() {
-        lifecycleScope.launchWhenStarted {
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             searchViewModel.pagePhotoGroupState.collectLatest { photoGroupPagingData ->
                 photoGroupAdapter.submitData(photoGroupPagingData)
             }
