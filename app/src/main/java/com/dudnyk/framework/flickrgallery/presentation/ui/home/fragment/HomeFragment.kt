@@ -18,11 +18,11 @@ import com.dudnyk.framework.flickrgallery.presentation.ui.home.fragment.PublicFe
 import com.dudnyk.framework.flickrgallery.presentation.ui.home.viewmodel.HomeViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.stateViewModel
 
 class HomeFragment : Fragment() {
 
-    private val homeViewModel by viewModel<HomeViewModel>()
+    private val homeViewModel by stateViewModel<HomeViewModel>()
     private var _binding: LayoutHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var publicFeedAdapter: PublicFeedAdapter
@@ -44,6 +44,7 @@ class HomeFragment : Fragment() {
         initFields()
         customizeRecycleView()
         initObservers()
+        homeViewModel.getPhotosFromPublicFeedByTags()
     }
 
     override fun onDestroyView() {
@@ -93,13 +94,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun initObservers() {
-        lifecycleScope.launchWhenStarted {
-            homeViewModel.isDataAlreadyLoaded.collectLatest { isDataAlreadyLoaded ->
-                if (!isDataAlreadyLoaded) {
-                    homeViewModel.getPhotosFromPublicFeedByTags()
-                }
-            }
-        }
         lifecycleScope.launchWhenStarted {
             homeViewModel.publicFeedListState.collect { listOfPublicFeedStates ->
                 if (listOfPublicFeedStates.isNotEmpty()) {

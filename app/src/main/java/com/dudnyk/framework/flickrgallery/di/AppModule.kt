@@ -14,7 +14,8 @@ val appModule = module {
             getPublicFeedTagsFromDBUseCase = get(),
             insertPublicFeedTagToBDUseCase = get(),
             deletePublicFeedTagByTagUseCase = get(),
-            editPublicFeedTegUseCase = get()
+            editPublicFeedTegUseCase = get(),
+            savedStateHandle = get()
         )
     }
 

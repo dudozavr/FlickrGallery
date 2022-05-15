@@ -1,10 +1,12 @@
 package com.dudnyk.framework.flickrgallery.presentation.ui.home.viewmodel
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dudnyk.framework.flickrgallery.common.Constants.DELAY_AFTER_DOWNLOADING_DATA_FROM_NETWORK
 import com.dudnyk.framework.flickrgallery.common.PublicFeedResult
 import com.dudnyk.framework.flickrgallery.common.PublicFeedState
+import com.dudnyk.framework.flickrgallery.common.SavableMutableSaveStateFlow
 import com.dudnyk.framework.flickrgallery.common.extension.MutableListExtension.replaceByIndex
 import com.dudnyk.framework.flickrgallery.common.extension.MutableListExtension.replaceByIndexOrAdd
 import com.dudnyk.framework.flickrgallery.common.utils.ResultUtils.processResult
@@ -25,16 +27,22 @@ class HomeViewModel(
     private val getPublicFeedTagsFromDBUseCase: GetPublicFeedTagsFromDBUseCase,
     private val insertPublicFeedTagToBDUseCase: InsertPublicFeedTagToBDUseCase,
     private val deletePublicFeedTagByTagUseCase: DeletePublicFeedTagByTagFromBDUseCase,
-    private val editPublicFeedTegUseCase: EditPublicFeedTegUseCase
+    private val editPublicFeedTegUseCase: EditPublicFeedTegUseCase,
+    savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val downloadedPublicFeeds = mutableListOf<PublicFeedState>()
+    private var downloadedPublicFeeds = mutableListOf<PublicFeedState>()
 
-    private val _publicFeedListState = MutableStateFlow<List<PublicFeedState>>(emptyList())
+    private val _publicFeedListState = SavableMutableSaveStateFlow(
+        savedStateHandle,
+        "publicFeedListState",
+        emptyList<PublicFeedState>()
+    )
     val publicFeedListState = _publicFeedListState.asStateFlow()
 
-    private val _isDataAlreadyLoaded = MutableStateFlow(false)
-    val isDataAlreadyLoaded = _isDataAlreadyLoaded.asStateFlow()
+    init {
+        downloadedPublicFeeds = _publicFeedListState.value.toMutableList()
+    }
 
     fun insertAndDisplayPublicFeedTag(publicFeedTag: PublicFeedTag) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -44,10 +52,11 @@ class HomeViewModel(
     }
 
     fun getPhotosFromPublicFeedByTags() {
-        viewModelScope.launch(Dispatchers.IO) {
-            getPublicFeeds(getPublicFeedTagsFromDBUseCase())
+        if (downloadedPublicFeeds.isEmpty()) {
+            viewModelScope.launch(Dispatchers.IO) {
+                getPublicFeeds(getPublicFeedTagsFromDBUseCase())
+            }
         }
-        _isDataAlreadyLoaded.value = true
     }
 
     fun deletePublicFeedTagByTag(publicFeedTag: PublicFeedTag) {
@@ -105,7 +114,11 @@ class HomeViewModel(
                     downloadedPublicFeeds.apply {
                         downloadedPublicFeeds.replaceByIndex(
                             index = indexById,
-                            itemToReplace = ItemState(id = id, isSuccess = true, data = data)
+                            itemToReplace = ItemState(
+                                id = id,
+                                isSuccess = true,
+                                data = data
+                            )
                         )
                     }
                 },
