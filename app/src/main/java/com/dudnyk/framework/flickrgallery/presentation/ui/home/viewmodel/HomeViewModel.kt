@@ -4,6 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dudnyk.framework.flickrgallery.common.Constants.DELAY_AFTER_DOWNLOADING_DATA_FROM_NETWORK
+import com.dudnyk.framework.flickrgallery.common.Constants.PUBLIC_FEED_SAVE_STATE_KEY
 import com.dudnyk.framework.flickrgallery.common.PublicFeedResult
 import com.dudnyk.framework.flickrgallery.common.PublicFeedState
 import com.dudnyk.framework.flickrgallery.common.SavableMutableSaveStateFlow
@@ -35,7 +36,7 @@ class HomeViewModel(
 
     private val _publicFeedListState = SavableMutableSaveStateFlow(
         savedStateHandle,
-        "publicFeedListState",
+        PUBLIC_FEED_SAVE_STATE_KEY,
         emptyList<PublicFeedState>()
     )
     val publicFeedListState = _publicFeedListState.asStateFlow()

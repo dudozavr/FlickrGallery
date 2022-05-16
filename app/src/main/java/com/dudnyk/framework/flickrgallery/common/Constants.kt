@@ -15,4 +15,5 @@ object Constants {
     const val TAG_FILTER_ALL = "ALL"
     const val TAG_FILTER_ANY = "ANY"
     const val DELAY_AFTER_DOWNLOADING_DATA_FROM_NETWORK = 2000L
+    const val PUBLIC_FEED_SAVE_STATE_KEY = "PUBLIC_FEED_SAVE_STATE_KEY"
 }
